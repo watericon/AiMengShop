@@ -1,0 +1,121 @@
+//
+//  Aimengshop.pch
+//  AiMengShop
+//
+//  Created by apple on 2017/6/12.
+//  Copyright © 2017年 apple. All rights reserved.
+//
+
+#ifndef Aimengshop_pch
+#define Aimengshop_pch
+
+#import <UIKit/UIKit.h>      //这个是你预编译的文件举例。
+#import "HttpManager.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "UIView+Frame.h"
+#import "UIColor+RkyHexxxxxxx.h"
+#import "CoreLocation/CoreLocation.h"
+#import "SysConfig.h"
+#import "CommonCore.h"
+#import "RkyMyControl.h"
+#import "Interface.h"
+#import <Foundation/Foundation.h>
+#import "CYPasswordView.h"
+#import "UIImage+MJ.h"
+#import "MBProgressHUD.h"
+#import "Masonry.h"
+#import "IWCheckNetwork.h"
+#import <WebKit/WebKit.h>
+#import "MJRefresh.h"
+#import "Reachability.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "MJExtension.h"
+#import "AFNetworking.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "MMDrawerController.h"
+#import "ZYBannerView.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import <UShareUI/UShareUI.h>
+#import "SDAutoLayout.h"
+#import "IQTextView.h"
+#import "IQUIView+Hierarchy.h"
+#import "Interface.h"
+
+#import "AiMengShop-Bridging-Header.h"
+
+
+
+
+
+#define HWZToken  [NSString stringWithFormat:@"%@",[CommonCore queryLOginUsertoken]]
+#define HWUnionid  [NSString stringWithFormat:@"%@",[CommonCore queryLoginUserId]]
+#define RegistrationID   [NSString stringWithFormat:@"%@",[CommonCore querySelctStoredID]]
+#define sizeW frame.size.width
+#define sizeH frame.size.height
+#define HWZBRED  [UIColor colorWithHexString:@"#f30036"]
+#define HWZBinvitecode  [NSString stringWithFormat:@"%@",[CommonCore queryloginvitecode]]
+#define HWZBPhone  [NSString stringWithFormat:@"%@",[CommonCore queryLoginUserPhone]]
+#define HWZBPWD  [NSString stringWithFormat:@"%@",[CommonCore queryloginPWD]]
+#define HWZUTYPE  [NSString stringWithFormat:@"%@",[CommonCore queryloginutype]]
+#define jpushID  [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:[SysConfig selectStoreID]]]
+#define CODE [NSString stringWithFormat:@"%@",[responseObject valueForKey:@"code"]]
+#define MESSAGE [NSString stringWithFormat:@"%@",[responseObject valueForKey:@"message"]]
+
+
+#define JSONCODE [NSString stringWithFormat:@"%@",json[@"code"]]
+#define JSONMESSAGE [NSString stringWithFormat:@"%@",json[@"message"]]
+
+#define imageNamed(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
+#define fontSizeNumber(fontsize) [UIFont systemFontOfSize:fontsize]
+#define colorHex(hexstring) [UIColor colorWithHexString:[NSString stringWithFormat:@"%@",hexstring]]
+#define bl(width) kScreenWidth/width
+
+#define phoneUUID [[UIDevice currentDevice].identifierForVendor UUIDString]
+#define toString(string) [NSString stringWithFormat:@"%@",string]
+#define InttoString(string) [NSString stringWithFormat:@"%d",string]
+
+
+// 2.获得RGB颜色
+#define IWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define MingshBankAPPkEY  4290be4603e401cec283fef02cd8782d
+#define IS_DEBUG_CONSOLE YES
+//颜色和透明度设置
+#define RGBA(r,g,b,a) [UIColor colorWithRed:(float)r/255.0f green:(float)g/255.0f blue:(float)b/255.0f alpha:a]
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define IS_NOT_EMPTY(string) (string !=nil && ![string isKindOfClass:[NSNull class]] && ![string isEqualToString:@""] && ![string isEqualToString:@"(null)"]&& ![string isEqualToString:@"<null>"])
+
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone5S ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone4S ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone6plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size)) : NO)
+
+
+
+#define toScale(scaleNumber) [NSString stringWithFormat:@"?x-oss-process=image//quality,Q_%d",(int)scaleNumber]
+#define imageUrlToScale(imgurl,scaleNumber) [NSString stringWithFormat:@"%@%@",imgurl,toScale(scaleNumber)]
+
+
+//3.自定义Log
+#ifdef DEBUG
+#define IWLog(...) NSLog(__VA_ARGS__)
+
+#else
+#define IWLog(...)
+#endif
+
+#define QWLog(FORMAT, ...) fprintf(stderr, "%s:%zd\t%s\n", [[[NSString stringWithUTF8String: __FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat: FORMAT, ## __VA_ARGS__] UTF8String]);
+
+
+// 通知中心
+#define NSNOTIF_CENTER   [NSNotificationCenter defaultCenter]
+#define NSNOTIF_LOGINOUT @"loginOut"
+#define NSNOTIF_LOGINSUCCESS @"loginSuccess"
+
+
+#define FIRST_LAUNCHING @"first_Launching"
+
+#define mainColor [UIColor colorWithHexString:@"6ed650"]
+
+
+#endif /* Aimengshop_pch */
